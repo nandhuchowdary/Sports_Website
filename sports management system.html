@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sports Day Management System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+    }
+
+    header {
+      background: #0b3d91;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #0b3d91;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        url('https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf');
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #0b3d91;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #0b3d91;
+      color: white;
+    }
+
+    footer {
+      background: #0b3d91;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h2>Sports Day 2026</h2>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#register">Register</a>
+    <a href="#events">Events</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Welcome to the Sports Day Management System</h1>
+  <p>Register for events, view schedules, and track live results.</p>
+</section>
+
+<section id="register">
+  <h2>Student Registration</h2>
+  <div class="card">
+    <form id="regForm">
+      <input type="text" id="name" placeholder="Student Name" required />
+      <input type="text" id="classsec" placeholder="Class & Section" required />
+
+     
+
+      <select id="event" required>
+        <option value="">Select Event</option>
+        <option>Welcome dance Classical 1 Ganesh vandanam- </option>
+<option>Instruments performance 1  - cheap thrills </option>
+<option>PP performance </option>
+<option>Vocal - song -kalabhiarava</option>
+<option>CAMB performance </option>
+<option>Instrument-2 - Rajinikanth BJM </option>
+<option>G1 and II Performance- </option>
+<option>Welcoming Guest to audience , program into for guest </option>
+<option>Classical Dance - 2  Dhashree thillana </option>
+<option>Guest intro </option>
+<option>Instrument 3 wakka wakka </option>
+<option>Welcoming guests onto the dias </option>
+<option>VC madam address</option>
+<option>Guest  Address</option>
+<option>Chiarman sir address</option>
+<option>Vice chairman address </option>
+<option>sports stadium openeing by flag hoisting </option>
+<option>declaration of stadium open to  players / balloon raise </option>
+<option>instrument -socha hai </option>
+<option>march past </option>
+<option>torch parade</option>
+<option>Awards ceremony</option>
+<option>Guest feicitaion </option>
+<option>courts inuaguratin / instrument - 5</option>
+<option>grade 3 performance </option>
+<option>vocal - 2</option>
+<option>special performance </option>
+<option>G-4 Performance </option>
+<option>G-5 Performance </option>
+<option>G-6 performance </option>
+<option>grade 7,8 girls formation </option>
+      </select>
+
+     <button type="button" onclick="registerStudent()">Register</button>
+s
+    </form>
+  </div>
+</section>
+
+<section id="events">
+  <h2>Event Schedule</h2>
+  <div class="card">
+    <table>
+      <tr><th>Event</th><th>Time</th><th>Venue</th></tr>
+      <tr><th>Event</th><th>Time</th><th>Venue</th></tr>
+      <tr><td> Classical dance 1 Ganesh vandanam- </td><td>4:35 to 4:45  </td><td>Sports Ground</td></tr>
+      <tr><td>Instruments performance 1  - cheap thrills </td><td>4:45  to 4:50  </td><td>Sports Ground</td></tr>
+      <tr><td>PP PP performance  </td><td>4:50 to 5:00 </td><td>Sports Ground</td></tr>
+      <tr><td>Vocal - song -kalabhiarava </td><td>5:00  to 5:05 </td><td>Sports Ground</td></tr>
+      <tr><td>PP CAMB performance  </td><td>5:05  to 5:10 </td><td>Sports Ground</td></tr>
+      <tr><td> Instrument-2 - Rajinikanth BJM  </td><td>5:10  to 5:15 </td><td>Sports Ground</td></tr>
+      <tr><td>G1 and II Performance-  </td><td>5:15 to 5:25 </td><td>Sports Ground</td></tr>
+      <tr><td> Welcoming Guest to audience , program into for guest-   </td><td>5:25  to 5:35 </td><td>Sports Ground</td></tr>
+      <tr><td> Classical Dance - 2  Dhashree thillana  performance </td><td>5:35  to 5:40 </td><td>Sports Ground</td></tr>
+      <tr><td>Guest intro.  </td><td>5:40  to 5:50 </td><td>Sports Ground</td></tr>
+      <tr><td> Instrument 3 wakka wakka  </td><td>5:50  to 5:55 </td><td>Sports Ground</td></tr>
+      <tr><td>Welcoming guests onto the dias .  </td><td>5:55  to 6:00 </td><td>Sports Ground</td></tr>
+      <tr><td> VC madam address performance </td><td>6:00 to 6:15</td><td>Sports Ground</td></tr>
+      <tr><td> Guest  Address </td><td>6:15 to 6:25</td><td>Sports Ground</td></tr>
+      <tr><td>Chiarman sir address </td><td>6:25 to 6:45</td><td>Sports Ground</td></tr>
+      <tr><td> Vice chairman address  </td><td>6:45 to 7:05 </td><td>Sports Ground</td></tr>
+      <tr><td> sports stadium openeing by flag hoisting   </td><td>7:05 to 7:15</td><td>Sports Ground</td></tr>
+      <tr><td> declaration of stadium open to  players / balloon raise  </td><td>7:15 to 7:25 </td><td>Sports Ground</td></tr>
+      <tr><td> instrument -socha hai  </td><td>7:25 to 7:30</td><td>Sports Ground</td></tr>
+      <tr><td> march past  </td><td> 7:30 to 7:45 </td><td>Sports Ground</td></tr>
+      <tr><td> torch parade </td><td> 7:45 to 8:00 </td><td>Sports Ground</td></tr>
+     <tr><td> Guest feicitaion   </td><td>8:05 to 8:05</td><td>Sports Ground</td></tr>
+     <tr><td>courts inuaguratin / instrument - 5  </td><td>8:05 to 8:10</td><td>Sports Ground</td></tr>
+     <tr><td> grade 3 performance  </td><td>8:05 to 8:25</td><td>Sports Ground</td></tr>
+     <tr><td>vocal - 2 </td><td>8:25 to 8:30</td><td>Sports Ground</td></tr>
+     <tr><td>special performance  </td><td>8:30 to 9:00</td><td>Sports Ground</td></tr>
+     <tr><td> G-4 Performance  </td><td>9:00 to 9:10</td><td>Sports Ground</td></tr>
+     <tr><td>G-5 Performance  </td><td>9:10 to 9:20<td>Sports Ground</td></tr>
+     <tr><td> G-6 performance  </td><td>9:20 to 9:30<td>Sports Ground</td></tr>
+     <tr><td> grade 7,8 girls formation  </td><td> 9:30 to 9:40<td>Sports Ground</td></tr>
+     <tr><td> grade 7,8 boys formation </td><td>9:40 to 9:50<td>Sports Ground</td></tr>
+     <tr><td>grade 9 formation  </td><td>9:50 to 10:00<td>Sports Ground</td></tr>
+     <tr><td>vote of thanks  </td><td>10:00 to 10:05<td>Sports Ground</td></tr>
+
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sports Day Management System</p>
+</footer>
+
+<!-- SCRIPT GOES HERE -->
+<script>
+function registerStudent() {
+
+let name = document.getElementById("name").value;
+let classSec = document.getElementById("classsec").value;
+let event = document.getElementById("event").value;
+
+let student = {
+name: name,
+classSec: classSec,
+event: event
+};
+
+let data = JSON.parse(localStorage.getItem("registrations")) || [];
+data.push(student);
+localStorage.setItem("registrations", JSON.stringify(data));
+
+alert("Registration Saved!");
+}
+</script>
+
+</body>
+</html>
+       
