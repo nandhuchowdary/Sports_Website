@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head
+<title>Cambridge</title>
+
+<style>
+
+body {
+
+margin: 0;
+
+font-family: Arial, sans-serif;
+
+}
+
+/* Top banner section */
+
+.header {
+
+background: linear-gradient(to right, #003366, #005599);
+
+color: white;
+
+padding: 60px 20px;
+
+text-align: center;
+
+}
+
+.header h1 {
+
+font-size: 40px;
+margin: 0;
+
+}
+
+.header p {
+
+font-size: 18px;
+
+}
+
+
+.slide-section {
+
+background-color: #f4f8fb;
+
+padding: 40px 0;
+
+text-align: center;
+}
+
+
+.slide-image {
+
+width: 80%;
+
+margin: auto;
+
+}
+.slide-image img {
+
+width: 100%;
+
+border-radius: 12px;
+}
+.content {
+
+padding: 40px;
+
+text-align: center;
+
+background-color: #f4f8fb;
+
+}
+
+.content h2 {
+  text-align: center;
+}
+
+
+.center-title {
+
+text-align: center;
+
+margin-bottom: 20px;
+
+text-align: center;
+}
+
+
+.about-header {
+
+position: relative;
+
+text-align: center;
+
+}
+margin-bottom: 20px;
+
+}
+
+text-align: center;
+
+.about-header {
+
+position: relative;
+
+text-align: center;
+
+}
+
+.read-more {
+
+position: absolute;
+
+font-size: 20px;
+
+font-weight: bold;
+
+cursor: pointer;
+
+animation: flickerColors 1s infinite;
+
+background-color: yellow;
+
+padding: 4px 8px;
+
+border-radius: 6px;
+
+text-decoration: none;
+
+/* removes underline */
+
+color: purple;
+
+}
+/* Flickering colors */
+
+@keyframes flickerColors {
+
+}
+
+0% { color: red; }
+
+25% { color: orange; }
+
+50% { color: blue; }
+
+75% { color: green; }
+
+100% { color: purple; }
+
+.campus-header {
+
+position: relative;
+
+text-align: center;
+
+}
+
+.campus-header .read-more {
+
+top: -30px;
+
+right: 40px;
+
+}  
+</style>
+
+</head>
+
+<body>
+
+<div class="top-bar">
+
+<img src="logo.png" alt="School Logo">
+
+</div>
+
+<div class="header">
+
+<h1>Cambridge Block</h1>
+
+<p>Explore the Cambridge learning path</p>
+
+</div>
+
+<div class="content">
+
+<div class="about-header">
+
+<h2>About Cambridge</h2>
+
+</div>
+
+<p>
+
+"The Cambridge curriculum focuses on conceptual understanding, critical thinking, and global learning standards. "
+
+</p>
+
+<p id="moreText" style="display:none;">
+“Cambridge programs prepare students for life, helping them develop an informed curiosity and a lasting passion for learning. The curriculı encourages independent thinking and problem solving.”
+
+</p>
+
+</div>
+
+<section class="slide-section">
+
+<div class="campus-header">
+
+<h2>Campus View</h2>
+
+<a href="tree4.html" class="read-more">Read More</a>
+
+</div>
+
+<div class="slide-image">
+
+<img src="more cam pics.png" alt="Campus Image">
+
+</div>
+
+</section>
+
+<script>
+
+function toggleText() {
+
+var text = document.getElementById("moreText");
+
+if (text.style.display === "none") {
+
+text.style.display = "block";
+
+} else {
+ text.style.display= “none”;
+}
+</script>
+</body>
+</html>
+
+
