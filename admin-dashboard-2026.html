@@ -380,8 +380,19 @@ let chart = new Chart(ctx,{
         }
     }
 });
-const students = [];
+    onSnapshot(collection(db,"registrations"), (snapshot)=>{
 
+    tbody.innerHTML="";
+
+    total.innerHTML=snapshot.size;
+
+    document.getElementById("today").innerHTML=snapshot.size;
+
+    let eventList=[];
+    let eventCount={};
+    let latestTime=0;
+    let lastStudent="----";
+    const students = [];
 snapshot.forEach((student)=>{
     students.push({
         id: student.id,
@@ -389,12 +400,31 @@ snapshot.forEach((student)=>{
     });
 });
 
-students.sort((a, b) =>
-    a.classSec.localeCompare(b.classSec, undefined, {
-        numeric: true,
-        sensitivity: "base"
-    })
-);
+students.sort((a,b)=>{
+
+    let classA = a.classSec.toUpperCase();
+    let classB = b.classSec.toUpperCase();
+
+    const order = {
+        "PP1":-2,
+        "PP2":-1
+    };
+
+    let numA = order[classA] ??
+        parseInt(classA.match(/\d+/)?.[0] || 0);
+
+    let numB = order[classB] ??
+        parseInt(classB.match(/\d+/)?.[0] || 0);
+
+    if(numA !== numB)
+        return numA-numB;
+
+    let secA = classA.replace(/[0-9]/g,"");
+    let secB = classB.replace(/[0-9]/g,"");
+
+    return secA.localeCompare(secB);
+
+});
 
 students.forEach((data)=>{
 
