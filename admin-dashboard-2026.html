@@ -109,7 +109,15 @@ border:1px solid #ccc;
 flex:1;
 
 }
+.tableContainer{
 
+width:95%;
+
+margin:auto;
+
+overflow-x:auto;
+
+}
 table{
 
 width:95%;
@@ -167,7 +175,33 @@ button:hover{
 .deleteBtn{
     background:#d32f2f;
 }    
+.classTabs{
+    width:95%;
+    margin:20px auto;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
 
+.tab{
+    background:#e3eaf7;
+    color:#0b3d91;
+    border:none;
+    padding:10px 18px;
+    border-radius:20px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.tab:hover{
+    background:#0b3d91;
+    color:white;
+}
+
+.tab.active{
+    background:#0b3d91;
+    color:white;
+}
 </style>
 
 </head>
@@ -230,9 +264,38 @@ onkeyup="filterTable()">
 </select>
 
 </div>
+<div class="classTabs">
+
+<button class="tab active" onclick="filterClass('')">All</button>
+
+<button class="tab" onclick="filterClass('PP1')">PP1</button>
+
+<button class="tab" onclick="filterClass('PP2')">PP2</button>
+
+<button class="tab" onclick="filterClass('1')">1</button>
+
+<button class="tab" onclick="filterClass('2')">2</button>
+
+<button class="tab" onclick="filterClass('3')">3</button>
+
+<button class="tab" onclick="filterClass('4')">4</button>
+
+<button class="tab" onclick="filterClass('5')">5</button>
+
+<button class="tab" onclick="filterClass('6')">6</button>
+
+<button class="tab" onclick="filterClass('7')">7</button>
+
+<button class="tab" onclick="filterClass('8')">8</button>
+
+<button class="tab" onclick="filterClass('9')">9</button>
+
+<button class="tab" onclick="filterClass('10')">10</button>
+
+</div>
+<div class="tableContainer">
 
 <table id="studentTable">
-
 <thead>
 
 <tr>
@@ -250,8 +313,8 @@ onkeyup="filterTable()">
 <tbody>
 
 </tbody>
-
 </table>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div style="width:95%;margin:40px auto;background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.15);">
@@ -301,10 +364,12 @@ let chart = new Chart(ctx,{
     type:"bar",
     data:{
         labels:[],
-        datasets:[{
-            label:"Registrations",
-            data:[]
-        }]
+       datasets:[{
+    label:"Registrations",
+    data:[],
+    backgroundColor:"#1565c0",
+    borderRadius:8
+}]
     },
     options:{
         responsive:true,
@@ -337,11 +402,13 @@ if(eventCount[data.event]){
 else{
     eventCount[data.event]=1;
 }
-if(data.timestamp > latestTime){
-
-    latestTime = data.timestamp;
+if (!data.timestamp && lastStudent === "----") {
     lastStudent = data.name;
+}
 
+if ((data.timestamp || 0) > latestTime) {
+    latestTime = data.timestamp || 0;
+    lastStudent = data.name;
 }
 
 if(!eventList.includes(data.event))
@@ -402,7 +469,25 @@ await deleteDoc(doc(db,"registrations",id));
 }
 
 }
+let selectedClass = "";
 
+window.filterClass = (className) => {
+
+    selectedClass = className;
+
+    document.querySelectorAll(".tab").forEach(tab=>{
+        tab.classList.remove("active");
+    });
+
+    document.querySelectorAll(".tab").forEach(tab=>{
+        if(tab.innerText === (className === "" ? "All" : className)){
+            tab.classList.add("active");
+        }
+    });
+
+    filterTable();
+
+};
 window.filterTable=()=>{
 
 let search=document.getElementById("search").value.toLowerCase();
@@ -416,7 +501,8 @@ rows.forEach(row=>{
 let txt=row.innerText.toLowerCase();
 
 let eventName=row.cells[2].innerText.toLowerCase();
-
+    
+let className = row.cells[1].innerText.toLowerCase();
 let show=true;
 
 if(search!="" && !txt.includes(search))
@@ -424,7 +510,9 @@ show=false;
 
 if(event!="" && eventName!=event)
 show=false;
-
+    
+if(selectedClass != "" && !className.startsWith(selectedClass.toLowerCase()))
+    show = false;
 row.style.display=show?"":"none";
 
 });
