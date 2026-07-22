@@ -158,7 +158,6 @@
       </select>
 
      <button type="button" onclick="registerStudent()">Register</button>
-s
     </form>
   </div>
 </section>
@@ -212,25 +211,65 @@ s
 </footer>
 
 <!-- SCRIPT GOES HERE -->
-<script>
-function registerStudent() {
+<script type="module">
 
-let name = document.getElementById("name").value;
-let classSec = document.getElementById("classsec").value;
-let event = document.getElementById("event").value;
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  addDoc
+} from "https://www.gstatic.com/firebasejs/12.16.0/firebase-firestore.js";
 
-let student = {
-name: name,
-classSec: classSec,
-event: event
+const firebaseConfig = {
+  apiKey: "AIzaSyC88yAXnb9CgQVWb3VANGmBAzqqw513ISE",
+  authDomain: "sports-day-5b77f.firebaseapp.com",
+  projectId: "sports-day-5b77f",
+  storageBucket: "sports-day-5b77f.firebasestorage.app",
+  messagingSenderId: "962574197835",
+  appId: "1:962574197835:web:02a852d9987d58be6199ce",
+  measurementId: "G-7ZYTQJFZ1L"
 };
 
-let data = JSON.parse(localStorage.getItem("registrations")) || [];
-data.push(student);
-localStorage.setItem("registrations", JSON.stringify(data));
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-alert("Registration Saved!");
+window.registerStudent = async function () {
+
+    const name = document.getElementById("name").value.trim();
+    const classSec = document.getElementById("classsec").value.trim();
+    const event = document.getElementById("event").value;
+
+    if(name=="" || classSec=="" || event==""){
+        alert("Please fill all fields.");
+        return;
+    }
+
+    try{
+
+        await addDoc(collection(db,"registrations"),{
+
+            name:name,
+            classSec:classSec,
+            event:event,
+            date:new Date().toLocaleString()
+
+        });
+
+        alert("Registration Saved Successfully!");
+
+        document.getElementById("regForm").reset();
+
+    }
+
+    catch(error){
+
+        console.log(error);
+        alert("Error Saving Registration!");
+
+    }
+
 }
+
 </script>
 
 </body>
