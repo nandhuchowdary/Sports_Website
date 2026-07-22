@@ -248,12 +248,14 @@ window.registerStudent = async function () {
 
         await addDoc(collection(db,"registrations"),{
 
-            name:name,
-            classSec:classSec,
-            event:event,
-            date:new Date().toLocaleString()
+    name:name,
+    classSec:classSec,
+    event:event,
+    date:new Date().toLocaleString(),
+    timestamp: Date.now()
 
-        });
+});
+        
 
         alert("Registration Saved Successfully!");
 
