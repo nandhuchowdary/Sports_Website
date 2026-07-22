@@ -44,29 +44,44 @@ padding:25px;
 }
 
 .card{
-
-background:white;
-
-padding:20px;
-
-border-radius:12px;
-
-box-shadow:0 4px 12px rgba(0,0,0,.15);
-
-text-align:center;
-
+    padding:20px;
+    border-radius:12px;
+    color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+    text-align:center;
 }
 
+.card:nth-child(1){
+    background:#1565c0;
+}
+
+.card:nth-child(2){
+    background:#2e7d32;
+}
+
+.card:nth-child(3){
+    background:#ef6c00;
+}
+
+.card:nth-child(4){
+    background:#8e24aa;
+}
+
+.card h1,
+.card h2,
+.card h3{
+    margin:8px 0;
+    color:white;
+}
 .card h1{
 
-color:#0b3d91;
+color:white;
 
 font-size:40px;
 
 margin:10px;
 
 }
-
 .controls{
 
 width:95%;
@@ -178,7 +193,7 @@ button:hover{
 </div>
 
 <div class="card">
-<h3>Today's Registrations</h3>
+<h3>Current Registrations</h3>
 <h1 id="today">0</h1>
 </div>
 
@@ -237,7 +252,13 @@ onkeyup="filterTable()">
 </tbody>
 
 </table>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<div style="width:95%;margin:40px auto;background:white;padding:20px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.15);">
+    <h2 style="text-align:center;color:#0b3d91;">📊 Event Wise Registrations</h2>
+
+    <canvas id="eventChart"></canvas>
+</div>
 <script type="module">
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.16.0/firebase-app.js";
@@ -274,6 +295,26 @@ const db=getFirestore(app);
 const tbody=document.querySelector("tbody");
 
 const total=document.getElementById("total");
+    const ctx = document.getElementById("eventChart");
+
+let chart = new Chart(ctx,{
+    type:"bar",
+    data:{
+        labels:[],
+        datasets:[{
+            label:"Registrations",
+            data:[]
+        }]
+    },
+    options:{
+        responsive:true,
+        plugins:{
+            legend:{
+                display:false
+            }
+        }
+    }
+});
 
 onSnapshot(collection(db,"registrations"), (snapshot)=>{
 
@@ -284,13 +325,18 @@ total.innerHTML=snapshot.size;
 document.getElementById("today").innerHTML=snapshot.size;
 
 let eventList=[];
-
+let eventCount={};
 let lastStudent="----";
 
 snapshot.forEach((student)=>{
 
 const data=student.data();
-
+if(eventCount[data.event]){
+    eventCount[data.event]++;
+}
+else{
+    eventCount[data.event]=1;
+}
 lastStudent=data.name;
 
 if(!eventList.includes(data.event))
@@ -336,8 +382,12 @@ eventList.forEach(event=>{
 dropdown.innerHTML+=`<option>${event}</option>`;
 
 });
+chart.data.labels = Object.keys(eventCount);
+chart.data.datasets[0].data = Object.values(eventCount);
+chart.update();
 
 });
+   
 window.deleteStudent=async(id)=>{
 
 if(confirm("Delete this registration?")){
