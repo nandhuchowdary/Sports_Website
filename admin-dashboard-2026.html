@@ -400,27 +400,27 @@ snapshot.forEach((student)=>{
     });
 });
 
-students.sort((a,b)=>{
+students.sort((a, b) => {
 
-    let classA = a.classSec.toUpperCase();
-    let classB = b.classSec.toUpperCase();
+    const classA = (a.classSec || "").toUpperCase().trim();
+    const classB = (b.classSec || "").toUpperCase().trim();
 
-    const order = {
-        "PP1":-2,
-        "PP2":-1
+    const getClassNumber = (cls) => {
+        if(cls === "PP1") return -2;
+        if(cls === "PP2") return -1;
+
+        const match = cls.match(/\d+/);
+        return match ? parseInt(match[0]) : 999;
     };
 
-    let numA = order[classA] ??
-        parseInt(classA.match(/\d+/)?.[0] || 0);
-
-    let numB = order[classB] ??
-        parseInt(classB.match(/\d+/)?.[0] || 0);
+    const numA = getClassNumber(classA);
+    const numB = getClassNumber(classB);
 
     if(numA !== numB)
-        return numA-numB;
+        return numA - numB;
 
-    let secA = classA.replace(/[0-9]/g,"");
-    let secB = classB.replace(/[0-9]/g,"");
+    const secA = classA.replace(/[0-9]/g,"");
+    const secB = classB.replace(/[0-9]/g,"");
 
     return secA.localeCompare(secB);
 
