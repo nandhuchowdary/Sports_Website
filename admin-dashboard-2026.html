@@ -326,8 +326,8 @@ document.getElementById("today").innerHTML=snapshot.size;
 
 let eventList=[];
 let eventCount={};
+let latestTime=0;
 let lastStudent="----";
-
 snapshot.forEach((student)=>{
 
 const data=student.data();
@@ -337,7 +337,12 @@ if(eventCount[data.event]){
 else{
     eventCount[data.event]=1;
 }
-lastStudent=data.name;
+if(data.timestamp > latestTime){
+
+    latestTime = data.timestamp;
+    lastStudent = data.name;
+
+}
 
 if(!eventList.includes(data.event))
 eventList.push(data.event);
