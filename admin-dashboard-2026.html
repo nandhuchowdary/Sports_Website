@@ -380,64 +380,57 @@ let chart = new Chart(ctx,{
         }
     }
 });
+const students = [];
 
-onSnapshot(collection(db,"registrations"), (snapshot)=>{
-
-tbody.innerHTML="";
-
-total.innerHTML=snapshot.size;
-
-document.getElementById("today").innerHTML=snapshot.size;
-
-let eventList=[];
-let eventCount={};
-let latestTime=0;
-let lastStudent="----";
 snapshot.forEach((student)=>{
-
-const data=student.data();
-if(eventCount[data.event]){
-    eventCount[data.event]++;
-}
-else{
-    eventCount[data.event]=1;
-}
-if (!data.timestamp && lastStudent === "----") {
-    lastStudent = data.name;
-}
-
-if ((data.timestamp || 0) > latestTime) {
-    latestTime = data.timestamp || 0;
-    lastStudent = data.name;
-}
-
-if(!eventList.includes(data.event))
-eventList.push(data.event);
-
-tbody.innerHTML+=`
-
-<tr>
-
-<td>${data.name}</td>
-
-<td>${data.classSec}</td>
-
-<td>${data.event}</td>
-
-<td>${data.date}</td>
-
-<td>
-
-<button class="deleteBtn" onclick="deleteStudent('${student.id}')">
-🗑 Delete
-</button>
-</td>
-
-</tr>
-
-`;
-
+    students.push({
+        id: student.id,
+        ...student.data()
+    });
 });
+
+students.sort((a, b) =>
+    a.classSec.localeCompare(b.classSec, undefined, {
+        numeric: true,
+        sensitivity: "base"
+    })
+);
+
+students.forEach((data)=>{
+
+    if(eventCount[data.event]){
+        eventCount[data.event]++;
+    } else {
+        eventCount[data.event]=1;
+    }
+
+    if (!data.timestamp && lastStudent === "----") {
+        lastStudent = data.name;
+    }
+
+    if ((data.timestamp || 0) > latestTime) {
+        latestTime = data.timestamp || 0;
+        lastStudent = data.name;
+    }
+
+    if(!eventList.includes(data.event))
+        eventList.push(data.event);
+
+    tbody.innerHTML += `
+    <tr>
+        <td>${data.name}</td>
+        <td>${data.classSec}</td>
+        <td>${data.event}</td>
+        <td>${data.date}</td>
+        <td>
+            <button class="deleteBtn" onclick="deleteStudent('${data.id}')">
+                🗑 Delete
+            </button>
+        </td>
+    </tr>
+    `;
+});
+
 
 document.getElementById("events").innerHTML=eventList.length;
 
