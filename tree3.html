@@ -1,240 +1,252 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
-<title>CBSE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CBSE - Vignan's World One School</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fb;
+        }
+
+        /* =========================
+           SCHOOL LOGO
+        ========================== */
+
+        .top-bar {
+            background-color: white;
+            padding: 10px 20px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-bar img {
+            width: 250px;
+            height: auto;
+        }
+
+
+        /* =========================
+           CBSE HEADER
+        ========================== */
+
+        .header {
+            background: linear-gradient(to right, #003366, #005599);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 40px;
+            margin: 0 0 15px 0;
+        }
+
+        .header p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+
+        /* =========================
+           ABOUT CBSE
+        ========================== */
+
+        .content {
+            padding: 50px 40px;
+            text-align: center;
+            background-color: #f4f8fb;
+        }
+
+        .content h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin: 0 auto;
+            max-width: 900px;
+        }
+
+
+        /* =========================
+           CAMPUS VIEW
+        ========================== */
+
+        .slide-section {
+            background-color: #f4f8fb;
+            padding: 30px 0 50px 0;
+            text-align: center;
+        }
+
+        .campus-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .campus-header h2 {
+            font-size: 28px;
+            margin: 0;
+        }
+
+
+        /* =========================
+           CAMPUS IMAGE
+        ========================== */
 
-<style>
+        .slide-image {
+            width: 80%;
+            max-width: 1400px;
+            margin: auto;
+        }
 
-body {
+        .slide-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
 
-margin: 0;
 
-font-family: Arial, sans-serif;
+        /* =========================
+           MOBILE VIEW
+        ========================== */
 
-}
+        @media (max-width: 768px) {
 
-/* Top banner section */
+            .top-bar {
+                height: auto;
+                justify-content: center;
+                padding: 15px;
+            }
 
-.header {
+            .top-bar img {
+                width: 200px;
+            }
 
-background: linear-gradient(to right, #003366, #005599);
+            .header {
+                padding: 45px 15px;
+            }
 
-color: white;
+            .header h1 {
+                font-size: 32px;
+            }
 
-padding: 60px 20px;
+            .header p {
+                font-size: 16px;
+            }
 
-text-align: center;
+            .content {
+                padding: 35px 20px;
+            }
 
-}
+            .content h2 {
+                font-size: 24px;
+            }
 
-.header h1 {
+            .content p {
+                font-size: 15px;
+            }
 
-font-size: 40px;
-margin: 0;
+            .campus-header h2 {
+                font-size: 24px;
+            }
 
-}
+            .slide-image {
+                width: 92%;
+            }
 
-.header p {
+        }
 
-font-size: 18px;
-
-}
-
-
-.slide-section {
-
-background-color: #f4f8fb;
-
-padding: 40px 0;
-
-text-align: center;
-}
-
-
-.slide-image {
-
-width: 80%;
-
-margin: auto;
-
-}
-.slide-image img {
-
-width: 100%;
-
-border-radius: 12px;
-}
-.content {
-
-padding: 40px;
-
-text-align: center;
-
-background-color: #f4f8fb;
-
-}
-
-.content h2 {
-  text-align: center;
-}
-
-
-.center-title {
-
-text-align: center;
-
-margin-bottom: 20px;
-
-text-align: center;
-}
-
-
-.about-header {
-
-position: relative;
-
-text-align: center;
-
-}
-margin-bottom: 20px;
-
-}
-
-text-align: center;
-
-.about-header {
-
-position: relative;
-
-text-align: center;
-
-}
-
-.read-more {
-
-position: absolute;
-
-font-size: 20px;
-
-font-weight: bold;
-
-cursor: pointer;
-
-animation: flickerColors 1s infinite;
-
-background-color: yellow;
-
-padding: 4px 8px;
-
-border-radius: 6px;
-
-text-decoration: none;
-
-/* removes underline */
-
-color: purple;
-
-}
-/* Flickering colors */
-
-@keyframes flickerColors {
-0% { color: red; }
-25% { color: orange; }
-50% { color: blue; }
-75% { color: green; }
-100% { color: purple; }
-}
-.campus-header {
-
-position: relative;
-
-text-align: center;
-
-}
-
-.campus-header .read-more {
-
-top: -15px;
-
-right: 20px;
-
-}  
-</style>
+    </style>
 
 </head>
 
+
 <body>
 
-<div class="top-bar">
 
-<img src="logo.png" alt="School Logo">
+    <!-- =========================
+         SCHOOL LOGO
+    ========================== -->
 
-</div>
+    <div class="top-bar">
 
-<div class="header">
+        <img src="logo.png" alt="Vignan's World One School Logo">
 
-<h1>CBSE Block</h1>
+    </div>
 
-<p>Explore the CBSE learning path</p>
 
-</div>
+    <!-- =========================
+         CBSE HEADER
+    ========================== -->
 
-<div class="content">
+    <div class="header">
 
-<div class="about-header">
+        <h1>CBSE Block</h1>
 
-<h2>About CBSE</h2>
+        <p>Explore the CBSE learning path</p>
 
-</div>
+    </div>
 
-<p>
 
-"The CBSE curriculum focuses on conceptual understanding, critical thinking, and global learning standards. "
+    <!-- =========================
+         ABOUT CBSE
+    ========================== -->
 
-</p>
+    <div class="content">
 
-<p id="moreText" style="display:none;">
-“CBSE programs prepare students for life, helping them develop an informed curiosity and a lasting passion for learning. The curriculı encourages independent thinking and problem solving.”
+        <h2>About CBSE</h2>
 
-</p>
+        <p>
+            The CBSE curriculum focuses on conceptual understanding,
+            critical thinking, and global learning standards.
+        </p>
 
-</div>
+    </div>
 
-<section class="slide-section">
 
-<div class="campus-header">
+    <!-- =========================
+         CAMPUS VIEW
+    ========================== -->
 
-<h2>Campus View</h2>
+    <section class="slide-section">
 
-<a href="tree5.html" class="read-more">Read More</a>
+        <div class="campus-header">
 
-</div>
+            <h2>Campus View</h2>
 
-<div class="slide-image">
+        </div>
 
-<img src="cbseveiws.png" alt="Campus Image">
 
-</div>
+        <div class="slide-image">
 
-</section>
+            <img
+                src="cbseveiws.png"
+                alt="Vignan's World One School Campus"
+            >
 
-<script>
+        </div>
 
-function toggleText() {
+    </section>
 
-var text = document.getElementById("moreText");
-	
-if (text.style.display === "none") {
 
-text.style.display = "block";
-
-} else {
- text.style.display = "none";
-
-}
-</script>
 </body>
+
 </html>
-
-
+```
